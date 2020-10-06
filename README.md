@@ -1,3 +1,3 @@
 # Spring-Boot-First-RESTfull
 
-train on RESTfull
+Learn how to use RESTfull
