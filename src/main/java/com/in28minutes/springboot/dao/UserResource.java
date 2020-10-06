@@ -4,13 +4,15 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+//import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,12 +51,32 @@ public class UserResource {
 		//"all-users", SERVER_PATH + "/users"
 		//retrieveAllUsers
 		Resource<User> resource = new Resource<User>(user);
-		ControllerLinkBuilder linkTo = 
-				linkTo(methodOn(this.getClass()).retrieveAllUsers());
+		List<Link> linkTo = new ArrayList<>();
+		linkTo.add(linkTo(methodOn(this.getClass()).retrieveAllUsers()).withRel("all-users"));
+		linkTo.add(linkTo(methodOn(this.getClass()).retrieveAllUsers()).withRel("Suers"));
+
 //		System.out.println("hnaaaaaaaaaaa  2");
 
-		resource.add(linkTo.withRel("all-users"));
+		resource.add(linkTo);
 		//HATEOAS
+		
+		
+		
+		///////////////////////////////////////////
+		
+//		List<Resource<User>> emp = new ArrayList<>();
+//		
+//		Resource<User> resource = new Resource<User>(user);
+//		ControllerLinkBuilder linkTo = 
+//				linkTo(methodOn(this.getClass()).retrieveAllUsers());
+////		System.out.println("hnaaaaaaaaaaa  2");
+//
+//		resource.add(linkTo.withRel("all-users"));
+//		
+//		emp.add(resource);
+//		
+		
+		
 		
 		return resource;
 		
